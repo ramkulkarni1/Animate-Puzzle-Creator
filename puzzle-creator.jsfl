@@ -1,4 +1,7 @@
-﻿var doc, frame, timeline,
+﻿//Author : Ram Kulkarni
+//Repository : https://github.com/ramkulkarni1/Animate-Puzzle-Creator
+
+var doc, frame, timeline,
 	docBKColor = '#999999',
 	startBtnColor = '#99CCFF',
 	startBtnTextColor = '#0000FF',
@@ -193,7 +196,7 @@ function createGameEndSym() {
 	var newLayer = timeline.layers[index];
 	newLayer.name = 'gameover';
 
-	var left = 172, top = 184, width = 440, height = 151;
+	var width = 440, height = 151, left = (doc.width / 2) - (width / 2), top = (doc.height / 2) - (height / 2);
 	var fill = doc.getCustomFill('toolbar');
 	fill.color = docBKColor;
 	fill.style = "solid";
@@ -201,14 +204,16 @@ function createGameEndSym() {
 	var rect = {left: left, right: (left+width), top: top, bottom: (top+height)};
 	doc.addNewRectangle(rect,0);
 	
-	left = 197, top = 220, width = 402, height = 33;
-	addText(197, 220, 402, 33, 'Congratulations on completing the puzzle!', 21, 'Arial', '#0000FF');
-	addText(277, 265, 95, 33, 'You took', 21, 'Arial', '#0000FF');
-	addText(372, 265, 150, 33, '', 21, 'Arial', '#0000FF');
+	left += 20, top += 20, width = 402, height = 33;
+	addText(left, top, width, height, 'Congratulations on completing the puzzle!', 21, 'Arial', '#0000FF');
+	left += 70; top += height+5; width = 95; height = 33;
+	addText(left, top, width, height, 'You took', 21, 'Arial', '#0000FF');
+	left += width+2; width = 150; height = 33;
+	addText(left, top, width, height, '', 21, 'Arial', '#0000FF');
 	
 	doc.selectNone();
 	fl.selectTool('arrow');
-	doc.mouseClick({x: 372+5, y:265+5}, true, false); //probably redundant, but to be safe
+	doc.mouseClick({x: left+5, y:top+5}, true, false); //probably redundant, but to be safe
 	doc.selection[0].name = 'time_txt';
 	
 	doc.setSelectionRect(rect); 

@@ -1,3 +1,6 @@
+//Author : Ram Kulkarni
+//Repository : https://github.com/ramkulkarni1/Animate-Puzzle-Creator
+
 (function() {
 
     function _puzzleManager(numPieces, xArg, yArg, widthArg, heightArg, lib, puzzleDoneCallback) {
